@@ -1,0 +1,22 @@
+{
+  /* 基本設定は、tsconfig.json から継承 */
+  "extends": "./tsconfig.json",
+
+  "compilerOptions": {
+    /* imoprt スコープの範囲を src 配下に狭める */
+    "rootDir": "./src",
+  },
+
+  /* トランスパイルの範囲を ./src/ 配下のみに指定 */
+  "include": [
+    "./src/**/*",
+  ],
+
+  /* トランスパイルから除外する */
+  /* node_modules 等も必須 */
+  "exclude": [
+    "./test/**/*",
+    "node_modules",
+    "**/node_modules/"
+  ]
+}
