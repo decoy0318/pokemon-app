@@ -12,10 +12,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "prebuild": "rm -rf .build",
     "start": "react-scripts start",
-    "build": "tsc -p ./tsconfig.build.json && tsc-alias -p ./tsconfig.build.json",
-    "test": "ts-mocha test/**/*.spec.ts --paths -p ./tsconfig.json -R spec",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "lint:fix": "eslint --fix --ext .ts,.tsx,.js,.jsx ."
