@@ -23,9 +23,11 @@ const Card: React.FC<{ pokemon: Pokemon }> = ({pokemon}) => {
         <div className="cardData">
           <p className="title">高さ: {pokemon.height}</p>
         </div>
-        <div className="cardData">
-          <p className="title">アビリティ: {pokemon.abilities[0].ability.name}</p>
-        </div>
+        {pokemon.abilities.map((ability, index) => (
+          <div className="cardData" key={index}>
+            <p className="title">アビリティ{index + 1}: {ability.ability.name}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -7,9 +7,16 @@ import Navbar from './components/Navbar/Navbar';
 function App() {
   const initialURL = "https://pokeapi.co/api/v2/pokemon";
   const [loading, setLoading] = useState<boolean>(true);
+  const [count, setCount] = useState<number>(0);
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
   const [nextURL, setNextURL] = useState<string | null>("");
   const [prevURL, setPrevURL] = useState<string | null>("");
+
+  const increment = () => setCount((nextCount) => nextCount + 1);
+  const decrement = () => setCount((prevCount) => {
+    if (prevCount <= 0) return prevCount;
+    return prevCount - 1;
+  });
 
   useEffect(() => {
     const fetchPokemonData = async () => {
@@ -70,6 +77,11 @@ function App() {
             <div className="btn">
               <button onClick={handlePrevPage}>前へ</button>
               <button onClick={handleNextPage}>次へ</button>
+            </div>
+            <div>
+              <h3>手動カウンター: {count}</h3>
+              <button onClick={decrement}>減らす</button>
+              <button onClick={increment}>増やす</button>
             </div>
           </>
         )}
