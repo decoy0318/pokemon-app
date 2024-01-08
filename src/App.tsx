@@ -63,12 +63,12 @@ function App() {
 
   return (
     <>
-      <Navbar />
       <div className="App">
         {loading ? (
           <h1>ロード中</h1>
         ) : (
           <>
+            <Navbar />
             <div className="pokemonCardContainer">
               {pokemonData.map((pokemon, i) => (
                 <Card key={i} pokemon={pokemon} />
