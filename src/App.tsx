@@ -5,7 +5,7 @@ import Card from './components/Card/Card';
 import Navbar from './components/Navbar/Navbar';
 
 function App() {
-  const initialURL: string = "https://pokeapi.co/api/v2/pokemon";
+  const initialURL = "https://pokeapi.co/api/v2/pokemon";
   const [loading, setLoading] = useState<boolean>(true);
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
   const [nextURL, setNextURL] = useState<string | null>("");
@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     const fetchPokemonData = async () => {
-      let res = await getAllPokemon(initialURL);
+      const res = await getAllPokemon(initialURL);
       loadPokemon(res.results);
       setNextURL(res.next);
       setPrevURL(res.previous);
@@ -23,9 +23,9 @@ function App() {
   }, []);
 
   const loadPokemon = async (data: Pokemon[]) => {
-    let _pokemonData = await Promise.all(
+    const _pokemonData = await Promise.all(
       data.map(async (pokemon) => {
-        let pokemonRecord = await getPokemon(pokemon.url);
+        const pokemonRecord = await getPokemon(pokemon.url);
         return pokemonRecord;
       })
     );
@@ -36,7 +36,7 @@ function App() {
     if (!nextURL) return;
 
     setLoading(true);
-    let data = await getAllPokemon(nextURL);
+    const data = await getAllPokemon(nextURL);
     await loadPokemon(data.results);
     setNextURL(data.next);
     setPrevURL(data.previous);
@@ -47,7 +47,7 @@ function App() {
     if (!prevURL) return;
 
     setLoading(true);
-    let data = await getAllPokemon(prevURL);
+    const data = await getAllPokemon(prevURL);
     await loadPokemon(data.results);
     setNextURL(data.next);
     setPrevURL(data.previous);
